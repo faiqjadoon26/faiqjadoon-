@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Faiq Jadoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: #e0e0e0;
+      background-image: url('blurred-code.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-color: #121212;
+      filter: brightness(0.97);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 150px;
+      left: 0;
+      width: 100%;
+      height: 320px;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .hero-bg svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-bg path {
+      fill: #e63946 !important;
+      fill-opacity: 1 !important;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #00d1b2; /* Name in blue */
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: #e63946; /* Nav links in red */
+      text-decoration: none;
+      margin-right: 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #b02630; /* Darker red on hover */
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: 420px auto 50px;
+      background-color: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    h2 {
+      color: #e63946; /* Heading in red for style */
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    p {
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .photo-container {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .photo-container img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #e63946; /* Red border */
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.5); /* Red shadow */
+      display: inline-block;
+    }
+
+    .social {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .social a {
+      color: #e63946; /* Social link in red */
+      margin-right: 10px;
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+
+    .social a:hover {
+      color: #b02630;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      color: #666;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    a.button-primary {
+      background-color: #e63946;
+      color: #121212;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 1.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button-primary:hover {
+      background-color: #b02630;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>Faiq Jadoon</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Wave background -->
+  <div class="hero-bg">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path
+        d="M0,224L60,192L120,160L180,160L240,192L300,224L360,192L420,128L480,128L540,160L600,192L660,160L720,128L780,160L840,224L900,256L960,224L1020,160L1080,128L1140,160L1200,224L1260,224L1320,192L1380,160L1440,160L1440,0L0,0Z">
+      </path>
+    </svg>
+  </div>
+
+  <!-- About Section -->
+  <main class="main-content">
+    <h2>About Me</h2>
+
+    <div class="photo-container">
+      <img src="my-photo.jpg" alt="Faiq Jadoon" />
+    </div>
+
+    <p>
+      I'm Faiq Jadoon, a passionate and driven Software Engineering student currently studying at Ontario Tech University in Oshawa. Before that, I graduated from Middlefield Collegiate Institute in Markham, where I developed a deep interest in programming and digital technologies. Over the years, I’ve combined my love for coding with a strong commitment to community service and leadership.
+    </p>
+    <p>
+      Throughout high school, I founded and led the Programming Club, teaching Python to over 45 students and helping them build practical projects ranging from calculators to banking systems. This experience sharpened my skills in programming concepts such as object-oriented programming and algorithm design, while also fueling my passion for mentoring others.
+    </p>
+    <p>
+      Beyond the classroom, I have actively participated in various volunteer roles that have shaped me into a well-rounded individual. I managed a team of volunteers in a Soup Kitchen Program, where we prepared and sold hundreds of food packages each week, raising significant funds to support local charitable initiatives. I also led a youth fundraising campaign at SOS Children’s Village in Abbottabad, raising $1,200 in just one week while providing emotional support and mentorship to children in need.
+    </p>
+    <p>
+      My dedication to technology and community extends internationally as well. I founded the first IT Society at my previous school in Abbottabad, Pakistan, inspiring students to learn programming and digital skills through interactive workshops and hands-on sessions. I also served as an assistant teacher, helping students grasp challenging programming concepts and supporting their growth in computer science.
+    </p>
+    <p>
+      Technically, I’ve built several real-world applications, including a face recognition attendance system, chatbots, and games using Python and Pygame, emphasizing clean, reusable code and object-oriented design. I enjoy combining my digital marketing skills with programming to create impactful projects that solve real problems.
+    </p>
+    <p>
+      Overall, I’m committed to using my skills in software engineering and leadership to make a positive difference, whether through building innovative solutions or empowering others with digital literacy. I’m always excited to learn, collaborate, and take on new challenges that push me to grow both technically and personally.
+    </p>
+
+    <div class="social">
+      <a href="https://instagram.com/jadoon_faiq" target="_blank"><i class="fab fa-instagram"></i> @jadoon_faiq</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
