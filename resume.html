@@ -10,106 +10,99 @@
       margin: 0;
       padding: 0;
       font-family: Arial, sans-serif;
-      color: #e0e0e0;
       background-image: url('blurred-code.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
       background-repeat: no-repeat;
       background-color: #121212;
+      color: #e0e0e0;
       filter: brightness(0.97);
-      position: relative;
       min-height: 100vh;
-    }
-
-    .hero-bg {
-      position: absolute;
-      top: 150px;
-      left: 0;
-      width: 100%;
-      height: 320px;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    .hero-bg svg {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-
-    .hero-bg path {
-      fill: #e63946 !important; /* red wave */
-      fill-opacity: 1 !important;
     }
 
     header {
       background-color: transparent;
-      padding: 1.2rem 2rem 0.5rem 2rem;
-      position: relative;
-      z-index: 10;
+      padding: 1.2rem 2rem;
       display: flex;
-      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
     }
 
     header h1 {
       margin: 0;
-      color: #00d1b2; /* name in blue */
-    }
-
-    nav {
-      margin-top: 0.5rem;
+      color: #00d1b2;
+      font-size: 1.8rem;
     }
 
     nav a {
-      color: #e63946; /* nav links red */
+      color: #e63946;
       text-decoration: none;
-      margin-right: 1rem;
+      margin-left: 1.5rem;
       font-weight: bold;
       font-size: 1.1rem;
     }
 
     nav a:hover {
       text-decoration: underline;
-      color: #b02630;
+    }
+
+    hr.nav-divider {
+      border: none;
+      height: 6px;
+      background-color: #00d1b2;
+      margin: 0;
+      width: 100%;
     }
 
     .main-content {
-      max-width: 900px;
-      margin: 420px auto 50px;
+      max-width: 1000px;
+      margin: 50px auto;
       background-color: rgba(18, 18, 18, 0.85);
       backdrop-filter: blur(5px);
       border-radius: 12px;
-      padding: 2rem 3rem;
+      padding: 2rem;
       box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
-      line-height: 1.5;
     }
 
     h2 {
-      color: #e63946;
-      margin-bottom: 1rem;
+      color: #00d1b2;
       text-align: center;
     }
 
     h3 {
       color: #00d1b2;
       margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
+    }
+
+    p, ul {
+      line-height: 1.6;
     }
 
     ul {
-      padding-left: 1.2rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
+      padding-left: 1.5rem;
     }
 
-    li {
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-info p {
-      margin: 0.2rem 0;
+    .download-btn {
+      background-color: #00d1b2;
+      color: #121212;
+      padding: 0.8rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+      margin-top: 1.5rem;
+    }
+
+    .download-btn:hover {
+      background-color: #00b89c;
+    }
+
+    .download-container {
+      text-align: center;
+      margin-top: 2rem;
     }
 
     footer {
@@ -118,88 +111,76 @@
       background-color: #1a1a1a;
       color: #666;
       font-size: 0.9rem;
-      position: relative;
-      z-index: 10;
+      margin-top: 50px;
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Faiq Jadoon</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
+      <!-- <a href="projects.html">Projects</a> -->
       <a href="resume.html">Resume</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
-
-  <div class="hero-bg">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none">
-      <path
-        d="M0,224L60,192L120,160L180,160L240,192L300,224L360,192L420,128L480,128L540,160L600,192L660,160L720,128L780,160L840,224L900,256L960,224L1020,160L1080,128L1140,160L1200,224L1260,224L1320,192L1380,160L1440,160L1440,0L0,0Z">
-      </path>
-    </svg>
-  </div>
+  <hr class="nav-divider" />
 
   <main class="main-content">
     <h2>Resume</h2>
 
-    <section class="contact-info">
-      <p>Faiq Jadoon</p>
-      <p>53 Fonda Road, Markham, ON</p>
-      <p>Cell No: 647-807-6454</p>
-      <p>Email: faiqjadoon2007@gmail.com</p>
-    </section>
+    <p><strong>Faiq Jadoon</strong><br>
+    53 Fonda Road, Markham, ON<br>
+    Cell No: 647-807-6454<br>
+    Email: faiqjadoon2007@gmail.com</p>
 
     <h3>Objective</h3>
-    <p>
-      A dynamic and enthusiastic individual with a passion for digital marketing and Python programming/instruction.
-      Proven ability to lead teams, manage projects, and drive positive impact in both community and technical initiatives.
-      Skilled in online marketing tools, market analysis, budgeting planning, and project management, complemented by a strong
-      foundation in Python programming and instruction. Committed to driving results through creativity, teamwork, and clear communication.
-    </p>
+    <p>A dynamic and enthusiastic individual with a passion for digital marketing and Python programming/instruction. Proven ability to lead teams, manage projects, and drive positive impact in both community and technical initiatives. Skilled in online marketing tools, market analysis, budgeting planning, and project management, complemented by a strong foundation in Python programming and instruction. Committed to driving results through creativity, teamwork, and clear communication.</p>
 
     <h3>Skills</h3>
     <ul>
-      <li><strong>Digital Marketing:</strong> SEO, Social Media Marketing, Content Creation, Online Advertising Strategies, Market Analysis, Online Marketing Tools, Budgeting Planning, Social Media Management</li>
-      <li><strong>Programming:</strong> Python, Object-Oriented Programming (OOP), Data Structures, Algorithms, Web Scraping, NumPy, Pandas, Flask, Tkinter, Pygame, Google Colab, PyCharm, os module</li>
-      <li><strong>Project Management:</strong> Team Leadership, Coordination, Operations Management, Fundraising</li>
-      <li><strong>Instruction/Mentoring:</strong> Python Programming, Digital Literacy, Curriculum Development, One-on-One Support</li>
-      <li><strong>Community Engagement:</strong> Volunteer Coordination, Mentorship, Emotional Support, Event Organization</li>
-      <li><strong>Database Management:</strong> Data Scraping, Custom Database Development</li>
+      <li><strong>Digital Marketing:</strong> SEO, Social Media Marketing, Content Creation, Online Advertising Strategies, Market Analysis, Tools, Budgeting, Social Media Management</li>
+      <li><strong>Programming:</strong> Python, OOP, Data Structures, Algorithms, Web Scraping, NumPy, Pandas, Flask, Tkinter, Pygame, Google Colab, PyCharm, OS module</li>
+      <li><strong>Project Management:</strong> Team Leadership, Coordination, Operations, Fundraising</li>
+      <li><strong>Instruction & Mentoring:</strong> Python, Digital Literacy, Curriculum Development, 1-on-1 Support</li>
+      <li><strong>Community Engagement:</strong> Volunteer Coordination, Mentorship, Emotional Support, Events</li>
+      <li><strong>Database:</strong> Data Scraping, Custom DB Development</li>
     </ul>
 
     <h3>Experience</h3>
-
     <ul>
-      <li><strong>Digital Marketer (Abbottabad)</strong> — Managed 4 social media pages, content strategy, scheduling posts, and campaign contributions.</li>
-      <li><strong>Hackathon Participant & Team Leader, YRHacks 2025</strong> — Led team designing career decision support tool using Python and database scraping.</li>
-      <li><strong>President – Programming Club, Middlefield Collegiate Institute</strong> — Founded club, taught Python to 45+ students, guided projects, mentored one-on-one.</li>
-      <li><strong>Volunteer Team Lead – Soup Kitchen Program, Islamic Society of Markham (ISM)</strong> — Led volunteer team, managed food prep and sales, raised funds for charity.</li>
-      <li><strong>Founder & Head – IT Society, Beaconhouse School System (Pakistan)</strong> — Started IT society, taught and mentored students, organized coding workshops and tech support.</li>
-      <li><strong>Assistant Teacher, Beaconhouse School System</strong> — Supported ICT teachers, created coding challenges, provided 1-on-1 student help.</li>
-      <li><strong>Youth Volunteer, SOS Children’s Village, Abbottabad</strong> — Led fundraising, supported children’s activities and mentoring.</li>
+      <li><strong>Digital Marketer (Abbottabad):</strong> Managed 4 social media pages, content strategy, scheduling posts, and campaign contributions.</li>
+      <li><strong>Hackathon Team Leader – YRHacks 2025:</strong> Led team designing career decision tool using Python and scraped data from 34 school databases.</li>
+      <li><strong>President – Programming Club @ MCI:</strong> Founded club, taught Python to 45+ students, led projects, and mentored students.</li>
+      <li><strong>Volunteer Team Lead – Soup Kitchen @ ISM:</strong> Led food sales weekly, managed team, and raised $3,600 for charity.</li>
+      <li><strong>Founder – IT Society @ Beaconhouse:</strong> Taught Python, hosted workshops, and supported student-led tech events in Pakistan.</li>
+      <li><strong>Assistant Teacher – Beaconhouse:</strong> Supported ICT classes, designed coding challenges, and tutored students 1-on-1.</li>
+      <li><strong>Youth Volunteer – SOS Children's Village:</strong> Led a fundraising campaign and mentored kids through academic and social activities.</li>
     </ul>
 
     <h3>Education</h3>
     <ul>
-      <li>High School Diploma (Expected June 2025), Middlefield Collegiate Institute (MCI)</li>
-      <li>O Levels, Beaconhouse School System (2021 – 2023)</li>
+      <li><strong>High School Diploma (Expected June 2025)</strong> – Middlefield Collegiate Institute, Markham</li>
+      <li><strong>O Levels</strong> – Beaconhouse School System, Abbottabad (2021–2023)</li>
     </ul>
 
     <h3>Certifications</h3>
     <ul>
-      <li>Advanced Python Programming, eHunar Pakistan (July 2023)</li>
-      <li>Digital Marketing, Abbottabad Freelancing Hub (August 2023)</li>
+      <li><strong>Advanced Python Programming</strong> – eHunar Pakistan, July 2023</li>
+      <li><strong>Digital Marketing</strong> – Abbottabad Freelancing Hub, August 2023</li>
     </ul>
+
+    <div class="download-container">
+      <a href="Faiq-Jadoon-Resume.pdf" download class="download-btn">
+        <i class="fas fa-download"></i> Download My Resume (PDF)
+      </a>
+    </div>
   </main>
 
   <footer>
     <p>© 2025 Faiq Jadoon. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
