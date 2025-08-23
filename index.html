@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faiq Jadoon | Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #e0e0e0;
+      background-image: url('blurred-code.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-color: #121212;
+      filter: brightness(0.97);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #00d1b2;
+      font-size: 1.8rem;
+    }
+
+    nav a {
+      color: #e63946;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: text-decoration 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    hr.nav-divider {
+      border: none;
+      height: 6px;
+      background-color: #00d1b2;
+      margin: 0;
+      width: 100%;
+    }
+
+    .main-content {
+      max-width: 900px;
+      margin: 200px auto 50px;
+      background-color: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    }
+
+    .typing-text {
+      font-size: 32px;
+      font-weight: 600;
+      color: #00d1b2;
+    }
+
+    .cursor {
+      display: inline-block;
+      background-color: #00d1b2;
+      width: 2px;
+      height: 1.2em;
+      animation: blink 0.7s steps(1) infinite;
+      vertical-align: bottom;
+      margin-left: 5px;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      color: #ccc;
+    }
+
+    a.button-primary {
+      background-color: #00d1b2;
+      color: #121212;
+      padding: 0.8rem 1.6rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 2rem;
+      transition: background-color 0.3s ease;
+    }
+
+    a.button-primary:hover {
+      background-color: #00b89c;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1a1a1a;
+      color: #888;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+      border-top: 4px solid #00d1b2;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 1rem;
+      }
+
+      .main-content {
+        margin-top: 150px;
+        padding: 1.5rem;
+      }
+
+      .typing-text {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Faiq Jadoon</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <hr class="nav-divider" />
+
+  <main class="main-content">
+    <h2><span class="typing-text"></span><span class="cursor">|</span></h2>
+    <p>
+      I'm a passionate software engineering student at Ontario Tech University, with a love for Python, teaching, and digital creativity. Check out my work and feel free to reach out!
+    </p>
+
+    <a href="about.html" class="button-primary">Learn More About Me</a>
+  </main>
+
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const text = "Hi, I'm Faiq Jadoon";
+    let index = 0;
+
+    function typeEffect() {
+      if (index < text.length) {
+        document.querySelector(".typing-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+      }
+    }
+
+    window.onload = typeEffect;
+  </script>
+
+</body>
+</html>
