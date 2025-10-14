@@ -10,7 +10,7 @@ A hacker-themed portfolio website showcasing my projects, skills, and experience
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 
 ## 🌐 Live Website
-**https://faiqjadoon26.github.io/faiqjadoon-/*
+*https://faiqjadoon26.github.io/faiqjadoon-/*
 
 ## 🎯 Features
 
