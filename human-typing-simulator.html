@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Human Typing Simulator | Faiq Jadoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hacker-green: #00ff41;
+      --hacker-dark: #0a0a0a;
+      --hacker-darker: #050505;
+      --hacker-gray: #1a1a1a;
+      --accent-red: #e63946;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--hacker-green);
+      background-color: var(--hacker-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 255, 65, 0.03) 2px,
+          rgba(0, 255, 65, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 65, 0.2),
+        rgba(0, 255, 65, 0.05),
+        transparent
+      );
+      animation: scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    @keyframes scan {
+      0% {
+        top: 0%;
+      }
+      100% {
+        top: 100%;
+      }
+    }
+    
+    header {
+      background-color: rgba(10, 10, 10, 0.9);
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--hacker-green);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-container img {
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 5px var(--hacker-green));
+    }
+    
+    .logo-container h1 {
+      margin: 0;
+      color: var(--hacker-green);
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--hacker-green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 15px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .nav-active {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 10px var(--hacker-green);
+    }
+    
+    .main-content {
+      max-width: 1000px;
+      margin: 50px auto;
+      background-color: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .main-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+      animation: glow 3s infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    h2 {
+      color: var(--hacker-green);
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      position: relative;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+    }
+    
+    h3 {
+      color: var(--hacker-green);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+    }
+    
+    h3::before {
+      content: ">>";
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    .terminal-prompt {
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    p, ul {
+      line-height: 1.6;
+      color: #ccc;
+    }
+    
+    ul {
+      padding-left: 1.2rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    li::before {
+      content: ">";
+      color: var(--hacker-green);
+      position: absolute;
+      left: -1rem;
+    }
+    
+    .project-image {
+      display: block;
+      max-width: 100%;
+      margin: 1.5rem auto;
+      border-radius: 6px;
+      border: 1px solid var(--hacker-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-image:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+    }
+    
+    .screenshot-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 65, 0.05));
+      border: 2px dashed var(--hacker-green);
+      border-radius: 8px;
+      padding: 3rem;
+      margin: 1.5rem auto;
+      text-align: center;
+      max-width: 600px;
+    }
+    
+    .screenshot-placeholder i {
+      font-size: 3rem;
+      color: var(--hacker-green);
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+    
+    .screenshot-placeholder p {
+      color: var(--hacker-green);
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    
+    .screenshot-placeholder .small {
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 0.5rem;
+    }
+    
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+    
+    .tech-tag {
+      background-color: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--hacker-green);
+      color: var(--hacker-green);
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .tech-tag:hover {
+      background-color: var(--hacker-green);
+      color: var(--hacker-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--hacker-green);
+      font-weight: bold;
+      text-decoration: none;
+      border: 1.5px solid var(--hacker-green);
+      padding: 0.6rem 1.2rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .project-link::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    .project-link:hover::before {
+      left: 100%;
+    }
+    
+    .project-link:hover {
+      background-color: var(--hacker-green);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 20px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .project-link.github {
+      background-color: transparent;
+    }
+    
+    .project-link.github:hover {
+      background-color: var(--hacker-green);
+    }
+    
+    .code-section {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 6px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    
+    .code-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.2);
+    }
+    
+    .code-title {
+      color: var(--hacker-green);
+      font-weight: bold;
+    }
+    
+    .copy-btn {
+      background-color: transparent;
+      color: var(--hacker-green);
+      border: 1px solid var(--hacker-green);
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background-color: var(--hacker-green);
+      color: var(--hacker-dark);
+    }
+    
+    pre {
+      margin: 0;
+      color: var(--hacker-green);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    
+    .feature-card {
+      background-color: rgba(0, 255, 65, 0.05);
+      padding: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 255, 65, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 65, 0.2);
+      border-color: var(--hacker-green);
+    }
+    
+    .feature-card h4 {
+      color: var(--hacker-green);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .feature-card p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--hacker-darker);
+      color: var(--hacker-green);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--hacker-green);
+      box-shadow: 0 -5px 15px rgba(0, 255, 65, 0.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .main-content {
+        margin: 30px 15px;
+        padding: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .project-links {
+        flex-direction: column;
+      }
+      
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .screenshot-placeholder {
+        padding: 2rem;
+        margin: 1rem auto;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container h1 {
+        font-size: 1.3rem;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .screenshot-placeholder {
+        padding: 1.5rem;
+      }
+      
+      .screenshot-placeholder i {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+      <h1>Faiq Jadoon</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html" class="nav-active">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h2>Human Typing Simulator</h2>
+    
+    <p><span class="terminal-prompt">>></span> A Python GUI application that simulates human typing behavior with customizable speed, mistake rates, and pauses. Perfect for creating realistic typing demonstrations in Google Docs or any text editor.</p>
+    
+    <img src="typing-simulator.png" alt="Human Typing Simulator Interface" class="project-image">
+    
+    
+    <div class="tech-stack">
+      <span class="tech-tag">Python</span>
+      <span class="tech-tag">Tkinter</span>
+      <span class="tech-tag">PyAutoGUI</span>
+      <span class="tech-tag">GUI Automation</span>
+      <span class="tech-tag">Randomization</span>
+      <span class="tech-tag">User Interface</span>
+    </div>
+    
+    <h3>Project Overview</h3>
+    <p>The Human Typing Simulator is designed to mimic realistic human typing patterns rather than perfect robotic typing. It includes features like:</p>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h4><i class="fas fa-keyboard"></i> Variable Typing Speed</h4>
+        <p>Adjustable min/max delay between keystrokes to simulate natural typing rhythm</p>
+      </div>
+      
+      <div class="feature-card">
+        <h4><i class="fas fa-bug"></i> Realistic Mistakes</h4>
+        <p>Configurable mistake probability with automatic correction to mimic human errors</p>
+      </div>
+      
+      <div class="feature-card">
+        <h4><i class="fas fa-pause"></i> Thinking Pauses</h4>
+        <p>Random pauses during typing to simulate thinking or hesitation moments</p>
+      </div>
+      
+      <div class="feature-card">
+        <h4><i class="fas fa-sliders-h"></i> Customizable Settings</h4>
+        <p>Easy-to-use GUI for adjusting all parameters without modifying code</p>
+      </div>
+    </div>
+    
+    <h3>How It Works</h3>
+    <p>The application uses PyAutoGUI to simulate keyboard input while applying various human-like behaviors:</p>
+    <ul>
+      <li>Random delays between keystrokes within user-defined ranges</li>
+      <li>Occasional typos that are immediately corrected (backspace + correct key)</li>
+      <li>Natural pauses during typing to mimic thinking or hesitation</li>
+      <li>5-second countdown before starting to allow users to switch to target application</li>
+    </ul>
+    
+    <h3>Technical Implementation</h3>
+    <p>The core functionality is built around Python's Tkinter for the GUI and PyAutoGUI for automation:</p>
+    
+    <div class="code-section">
+      <div class="code-header">
+        <div class="code-title">Core Typing Logic</div>
+        <button class="copy-btn" onclick="copyCode()">Copy Code</button>
+      </div>
+      <pre><code>def start_typing():
+    text = text_box.get("1.0", tk.END).strip()
+    if not text:
+        return
+    
+    delay_min = float(min_delay.get())
+    delay_max = float(max_delay.get())
+    mistake_chance = float(mistake_rate.get())
+    pause_chance = float(pause_rate.get())
+    pause_time = float(pause_length.get())
+
+    info_label.config(text="Switch to Google Doc. Typing will start in 5 seconds...")
+    window.update()
+    time.sleep(5)
+
+    for char in text:
+        # Chance to pause (like thinking moment)
+        if random.random() < pause_chance and char not in [" ", "\n"]:
+            time.sleep(pause_time)
+
+        # Only make mistakes on letters, mistakes are lowercase only
+        if char.isalpha() and random.random() < mistake_chance:
+            wrong_char = random.choice(string.ascii_lowercase)
+            pyautogui.typewrite(wrong_char)
+            time.sleep(random.uniform(delay_min, delay_max))
+            pyautogui.typewrite(["backspace"])
+            time.sleep(random.uniform(delay_min, delay_max))
+
+        pyautogui.typewrite(char)
+        time.sleep(random.uniform(delay_min, delay_max))
+
+    info_label.config(text="Done!")</code></pre>
+    </div>
+    
+    <h3>Key Features</h3>
+    <ul>
+      <li><strong>Customizable Speed</strong>: Set minimum and maximum delay between keystrokes</li>
+      <li><strong>Mistake Simulation</strong>: Adjustable probability of making typos (0-100%)</li>
+      <li><strong>Natural Pauses</strong>: Configurable chance and duration of thinking pauses</li>
+      <li><strong>Text Input</strong>: Large text area for pasting or typing content</li>
+      <li><strong>User-Friendly Interface</strong>: Clean Tkinter GUI with intuitive controls</li>
+      <li><strong>Cross-Platform</strong>: Works on Windows, macOS, and Linux</li>
+    </ul>
+    
+    <h3>Use Cases</h3>
+    <ul>
+      <li>Creating realistic typing demonstration videos</li>
+      <li>Testing text input fields in applications</li>
+      <li>Automating data entry with human-like patterns</li>
+      <li>Educational purposes for typing tutorials</li>
+      <li>Performance testing of text editors</li>
+    </ul>
+    
+    <div class="project-links">
+      <a href="https://github.com/faiqjadoon26/human-typing-simulator" class="project-link github" target="_blank">
+        <i class="fab fa-github"></i> View Full Source Code
+      </a>
+      <a href="projects.html" class="project-link">
+        <i class="fas fa-arrow-left"></i> Back to Projects
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function copyCode() {
+      const codeElement = document.querySelector('pre code');
+      const textArea = document.createElement('textarea');
+      textArea.value = codeElement.textContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      
+      // Visual feedback
+      const button = document.querySelector('.copy-btn');
+      const originalText = button.textContent;
+      button.textContent = 'Copied!';
+      button.style.backgroundColor = 'var(--hacker-green)';
+      button.style.color = 'var(--hacker-dark)';
+      
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.style.backgroundColor = 'transparent';
+        button.style.color = 'var(--hacker-green)';
+      }, 2000);
+    }
+  </script>
+</body>
+</html>

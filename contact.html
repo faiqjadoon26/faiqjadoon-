@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Faiq Jadoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hacker-green: #00ff41;
+      --hacker-dark: #0a0a0a;
+      --hacker-darker: #050505;
+      --hacker-gray: #1a1a1a;
+      --accent-red: #e63946;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--hacker-green);
+      background-color: var(--hacker-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 255, 65, 0.03) 2px,
+          rgba(0, 255, 65, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 65, 0.2),
+        rgba(0, 255, 65, 0.05),
+        transparent
+      );
+      animation: scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    @keyframes scan {
+      0% {
+        top: 0%;
+      }
+      100% {
+        top: 100%;
+      }
+    }
+    
+    header {
+      background-color: rgba(10, 10, 10, 0.9);
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--hacker-green);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-container img {
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 5px var(--hacker-green));
+    }
+    
+    .logo-container h1 {
+      margin: 0;
+      color: var(--hacker-green);
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--hacker-green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 15px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .nav-active {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 10px var(--hacker-green);
+    }
+    
+    .main-content {
+      max-width: 700px;
+      margin: 50px auto;
+      background-color: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .main-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+      animation: glow 3s infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    h2 {
+      color: var(--hacker-green);
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      position: relative;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+    }
+    
+    .contact-subtitle {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #ccc;
+    }
+    
+    .terminal-prompt {
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--hacker-green);
+    }
+    
+    .input-container {
+      position: relative;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: var(--hacker-green);
+      transition: all 0.3s ease;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--hacker-green);
+      box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+    
+    .input-highlight {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--hacker-green);
+      transition: width 0.3s ease;
+    }
+    
+    input:focus ~ .input-highlight,
+    textarea:focus ~ .input-highlight {
+      width: 100%;
+    }
+    
+    button {
+      background-color: transparent;
+      color: var(--hacker-green);
+      padding: 0.8rem 1.5rem;
+      border: 1.5px solid var(--hacker-green);
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'JetBrains Mono', monospace;
+      position: relative;
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+    
+    button::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    button:hover::before {
+      left: 100%;
+    }
+    
+    button:hover {
+      background-color: var(--hacker-green);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 20px var(--hacker-green);
+    }
+    
+    .social-section {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 255, 65, 0.3);
+    }
+    
+    .social-title {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--hacker-green);
+      font-weight: 600;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--hacker-green);
+      transition: all 0.3s ease;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      width: 120px;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+      background-color: rgba(0, 255, 65, 0.1);
+    }
+    
+    .social-link i {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .social-link span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--hacker-darker);
+      color: var(--hacker-green);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--hacker-green);
+      box-shadow: 0 -5px 15px rgba(0, 255, 65, 0.1);
+    }
+    
+    /* Status message styling */
+    .status-message {
+      padding: 0.8rem;
+      border-radius: 4px;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      display: none;
+    }
+    
+    .status-success {
+      background-color: rgba(0, 255, 65, 0.1);
+      border: 1px solid var(--hacker-green);
+      color: var(--hacker-green);
+    }
+    
+    .status-error {
+      background-color: rgba(230, 57, 70, 0.1);
+      border: 1px solid var(--accent-red);
+      color: var(--accent-red);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .main-content {
+        margin: 30px 15px;
+        padding: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .social-links {
+        gap: 1rem;
+      }
+      
+      .social-link {
+        width: 100px;
+        padding: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container h1 {
+        font-size: 1.3rem;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .social-link {
+        width: 90px;
+      }
+      
+      .social-link i {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+      <h1>Faiq Jadoon</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html" class="nav-active">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h2>Contact Me</h2>
+    
+    <p class="contact-subtitle">
+      <span class="terminal-prompt">>></span> Let's connect and discuss technology, projects, or opportunities
+    </p>
+    
+    <div id="statusMessage" class="status-message"></div>
+    
+    <form id="contactForm" action="https://formspree.io/f/xqalzvan" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-container">
+          <input type="text" name="name" id="name" required />
+          <div class="input-highlight"></div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-container">
+          <input type="email" name="email" id="email" required />
+          <div class="input-highlight"></div>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="message">Message</label>
+        <div class="input-container">
+          <textarea name="message" id="message" rows="6" required></textarea>
+          <div class="input-highlight"></div>
+        </div>
+      </div>
+
+      <button type="submit">
+        <i class="fas fa-paper-plane"></i> Send Message
+      </button>
+    </form>
+
+    <div class="social-section">
+      <h3 class="social-title">Connect With Me</h3>
+      <div class="social-links">
+        <a href="https://instagram.com/jadoon_faiq" class="social-link" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://github.com/faiqjadoon26" class="social-link" target="_blank">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/faiq-jadoon-079983343/" class="social-link" target="_blank">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const formData = new FormData(form);
+      const statusMessage = document.getElementById('statusMessage');
+      
+      // Show loading state
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalText = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitButton.disabled = true;
+      
+      // Send form data
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Success
+          statusMessage.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+          statusMessage.className = 'status-message status-success';
+          statusMessage.style.display = 'block';
+          form.reset();
+        } else {
+          // Error
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch(error => {
+        // Network error
+        statusMessage.textContent = 'There was an error sending your message. Please try again or contact me directly via social media.';
+        statusMessage.className = 'status-message status-error';
+        statusMessage.style.display = 'block';
+      })
+      .finally(() => {
+        // Reset button state
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+        
+        // Hide status message after 5 seconds
+        setTimeout(() => {
+          statusMessage.style.display = 'none';
+        }, 5000);
+      });
+    });
+  </script>
+</body>
+</html>

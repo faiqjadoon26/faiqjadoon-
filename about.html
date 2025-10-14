@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Faiq Jadoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hacker-green: #00ff41;
+      --hacker-dark: #0a0a0a;
+      --hacker-darker: #050505;
+      --hacker-gray: #1a1a1a;
+      --accent-red: #e63946;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--hacker-green);
+      background-color: var(--hacker-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 255, 65, 0.03) 2px,
+          rgba(0, 255, 65, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 65, 0.2),
+        rgba(0, 255, 65, 0.05),
+        transparent
+      );
+      animation: scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    @keyframes scan {
+      0% {
+        top: 0%;
+      }
+      100% {
+        top: 100%;
+      }
+    }
+    
+    header {
+      background-color: rgba(10, 10, 10, 0.9);
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--hacker-green);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-container img {
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 5px var(--hacker-green));
+    }
+    
+    .logo-container h1 {
+      margin: 0;
+      color: var(--hacker-green);
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--hacker-green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 15px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .nav-active {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 10px var(--hacker-green);
+    }
+    
+    .main-content {
+      max-width: 1000px;
+      margin: 50px auto;
+      background-color: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .main-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+      animation: glow 3s infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    h2 {
+      color: var(--hacker-green);
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      position: relative;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+    }
+    
+    h3 {
+      color: var(--hacker-green);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+    }
+    
+    h3::before {
+      content: ">>";
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    .profile-section {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .profile-pic {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--hacker-green);
+      box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+      filter: drop-shadow(0 0 5px var(--hacker-green));
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .profile-pic:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+    }
+    
+    .profile-text {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .terminal-prompt {
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    p, ul {
+      line-height: 1.6;
+      color: #ccc;
+    }
+    
+    ul {
+      padding-left: 1.2rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    li::before {
+      content: ">";
+      color: var(--hacker-green);
+      position: absolute;
+      left: -1rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .skill-category {
+      background-color: rgba(0, 255, 65, 0.05);
+      padding: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 255, 65, 0.2);
+    }
+    
+    .skill-category h4 {
+      color: var(--hacker-green);
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+    
+    .skill-category ul {
+      padding-left: 1rem;
+      margin: 0;
+    }
+    
+    .skill-category li {
+      margin-bottom: 0.3rem;
+    }
+    
+    .leadership-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed rgba(0, 255, 65, 0.2);
+    }
+    
+    .leadership-item:last-child {
+      border-bottom: none;
+    }
+    
+    .item-title {
+      font-weight: bold;
+      color: var(--hacker-green);
+      margin-bottom: 0.3rem;
+    }
+    
+    .item-description {
+      color: #ccc;
+    }
+    
+    .social-section {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 255, 65, 0.3);
+      text-align: center;
+    }
+    
+    .social-title {
+      margin-bottom: 1.5rem;
+      color: var(--hacker-green);
+      font-weight: 600;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .social-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--hacker-green);
+      transition: all 0.3s ease;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      width: 120px;
+    }
+    
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+      background-color: rgba(0, 255, 65, 0.1);
+    }
+    
+    .social-link i {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .social-link span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--hacker-darker);
+      color: var(--hacker-green);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--hacker-green);
+      box-shadow: 0 -5px 15px rgba(0, 255, 65, 0.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .main-content {
+        margin: 30px 15px;
+        padding: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .profile-section {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .social-links {
+        gap: 1rem;
+      }
+      
+      .social-link {
+        width: 100px;
+        padding: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container h1 {
+        font-size: 1.3rem;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .profile-pic {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .social-link {
+        width: 90px;
+      }
+      
+      .social-link i {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+      <h1>Faiq Jadoon</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html" class="nav-active">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h2>About Me</h2>
+    
+    <div class="profile-section">
+      <img src="my-photo.jpg" alt="Faiq Jadoon" class="profile-pic" />
+      <div class="profile-text">
+        <p><span class="terminal-prompt">>></span> Hey! I'm <strong>Faiq Jadoon</strong>, a Software Engineering student at Ontario Tech University. I graduated from Middlefield Collegiate Institute and have a strong background in both programming and digital marketing.</p>
+        
+        <p><span class="terminal-prompt">>></span> I've taught Python to over 80 students, created real-world applications like a face recognition system, a chatbot, and games using pygame. I also have strong experience in digital marketing—managing social media campaigns, running content strategy, and analyzing market trends.</p>
+      </div>
+    </div>
+
+    <h3>Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>Programming</h4>
+        <ul>
+          <li>Python (OOP, Flask, Tkinter)</li>
+          <li>Pygame, Pandas, NumPy</li>
+          <li>Web Scraping</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Digital Marketing</h4>
+        <ul>
+          <li>SEO, Social Media</li>
+          <li>Content Creation</li>
+          <li>Advertising Strategy</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Other Skills</h4>
+        <ul>
+          <li>Project Management</li>
+          <li>Mentoring</li>
+          <li>Database Analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Leadership & Volunteering</h3>
+    <div class="leadership-item">
+      <div class="item-title">President – Programming Club @ MCI</div>
+      <p class="item-description">Taught Python, guided projects, mentored 45+ students</p>
+    </div>
+    
+    <div class="leadership-item">
+      <div class="item-title">Founder – IT Society @ Beaconhouse (Pakistan)</div>
+      <p class="item-description">Conducted Python workshops and tech events</p>
+    </div>
+    
+    <div class="leadership-item">
+      <div class="item-title">Soup Kitchen Team Lead @ ISM</div>
+      <p class="item-description">Led weekly meal sales, raised $3,600 for community causes</p>
+    </div>
+    
+    <div class="leadership-item">
+      <div class="item-title">Fundraiser @ SOS Children's Village</div>
+      <p class="item-description">Helped raise $1,200 in a week</p>
+    </div>
+    
+    <div class="leadership-item">
+      <div class="item-title">Hackathon Leader @ YRHacks</div>
+      <p class="item-description">Scraped 34 school databases to help students choose the right path</p>
+    </div>
+
+    <p><span class="terminal-prompt">>></span> Outside of coding, I enjoy helping others, building creative projects, and taking on leadership roles that make a real-world impact.</p>
+
+    <div class="social-section">
+      <h3 class="social-title">Connect With Me</h3>
+      <div class="social-links">
+        <a href="https://instagram.com/jadoon_faiq" class="social-link" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+        <a href="https://github.com/faiqjadoon26" class="social-link" target="_blank">
+          <i class="fab fa-github"></i>
+          <span>GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/faiq-jadoon-079983343/" class="social-link" target="_blank">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+</body>
+</html>

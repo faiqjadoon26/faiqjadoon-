@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faiq Jadoon | Home</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hacker-green: #00ff41;
+      --hacker-dark: #0a0a0a;
+      --hacker-darker: #050505;
+      --hacker-gray: #1a1a1a;
+      --accent-red: #e63946;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--hacker-green);
+      background-color: var(--hacker-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 255, 65, 0.03) 2px,
+          rgba(0, 255, 65, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 65, 0.2),
+        rgba(0, 255, 65, 0.05),
+        transparent
+      );
+      animation: scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    @keyframes scan {
+      0% {
+        top: 0%;
+      }
+      100% {
+        top: 100%;
+      }
+    }
+    
+    header {
+      background-color: rgba(10, 10, 10, 0.9);
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--hacker-green);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-container img {
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 5px var(--hacker-green));
+    }
+    
+    .logo-container h1 {
+      margin: 0;
+      color: var(--hacker-green);
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--hacker-green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 15px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .nav-active {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 10px var(--hacker-green);
+    }
+    
+    .main-content {
+      max-width: 900px;
+      margin: 100px auto 50px;
+      background-color: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 3rem;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .main-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+      animation: glow 3s infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    .terminal-prompt {
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    .typing-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    
+    .typing-text {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--hacker-green);
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    .cursor {
+      display: inline-block;
+      background-color: var(--hacker-green);
+      width: 3px;
+      height: 1.2em;
+      animation: blink 0.7s steps(1) infinite;
+      vertical-align: bottom;
+      margin-left: 5px;
+      box-shadow: 0 0 10px var(--hacker-green);
+    }
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+    
+    p {
+      font-size: 1.1rem;
+      margin-top: 1.5rem;
+      color: #ccc;
+      line-height: 1.6;
+    }
+    
+    .hacker-quote {
+      font-style: italic;
+      color: var(--hacker-green);
+      border-left: 2px solid var(--hacker-green);
+      padding-left: 1rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
+    }
+    
+    .button-primary {
+      background-color: transparent;
+      color: var(--hacker-green);
+      padding: 0.8rem 1.6rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+      border: 1.5px solid var(--hacker-green);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .button-primary::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    .button-primary:hover::before {
+      left: 100%;
+    }
+    
+    .button-primary:hover {
+      background-color: var(--hacker-green);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 20px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .quick-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--hacker-green);
+      transition: all 0.3s ease;
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      width: 140px;
+    }
+    
+    .quick-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+      background-color: rgba(0, 255, 65, 0.1);
+    }
+    
+    .quick-link i {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .quick-link span {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    
+     footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--hacker-darker);
+      color: var(--hacker-green);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--hacker-green);
+      box-shadow: 0 -5px 15px rgba(0, 255, 65, 0.1);
+    }
+    
+    /* Matrix Rain Effect Container */
+    .matrix-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .main-content {
+        margin: 60px 15px 30px;
+        padding: 1.5rem;
+      }
+      
+      .typing-text {
+        font-size: 1.8rem;
+      }
+      
+      .quick-links {
+        gap: 1rem;
+      }
+      
+      .quick-link {
+        width: 120px;
+        padding: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container h1 {
+        font-size: 1.3rem;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      .typing-text {
+        font-size: 1.5rem;
+      }
+      
+      .quick-link {
+        width: 100px;
+      }
+      
+      .quick-link i {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  <div class="matrix-container" id="matrixRain"></div>
+  
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+      <h1>Faiq Jadoon</h1>
+    </div>
+    <nav>
+      <a href="index.html" class="nav-active">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <div class="typing-container">
+      <span class="terminal-prompt">>></span>
+      <h2 class="typing-text"></h2>
+      <span class="cursor"></span>
+    </div>
+    
+    <p>
+      <span class="terminal-prompt">>></span> I'm a passionate software engineering student at Ontario Tech University, with a love for Python, teaching, and digital creativity. Check out my work and feel free to reach out!
+    </p>
+    
+    <div class="hacker-quote">
+      "In a world of ones and zeros, I speak the language of innovation."
+    </div>
+
+    <a href="about.html" class="button-primary">
+      <i class="fas fa-user-secret"></i> Learn More About Me
+    </a>
+    
+    <div class="quick-links">
+      <a href="projects.html" class="quick-link">
+        <i class="fas fa-code"></i>
+        <span>Projects</span>
+      </a>
+      <a href="resume.html" class="quick-link">
+        <i class="fas fa-file-alt"></i>
+        <span>Resume</span>
+      </a>
+      <a href="contact.html" class="quick-link">
+        <i class="fas fa-envelope"></i>
+        <span>Contact</span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Typing effect
+    const text = "Hi, I'm Faiq Jadoon";
+    let index = 0;
+
+    function typeEffect() {
+      if (index < text.length) {
+        document.querySelector(".typing-text").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeEffect, 100);
+      }
+    }
+
+    // Simple matrix rain effect
+    function createMatrixRain() {
+      const container = document.getElementById('matrixRain');
+      const characters = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+      
+      for (let i = 0; i < 50; i++) {
+        const drop = document.createElement('div');
+        drop.style.position = 'absolute';
+        drop.style.left = Math.random() * 100 + 'vw';
+        drop.style.top = Math.random() * -100 + 'px';
+        drop.style.color = 'var(--hacker-green)';
+        drop.style.fontSize = (Math.random() * 14 + 10) + 'px';
+        drop.style.opacity = Math.random() * 0.5 + 0.1;
+        drop.style.animation = `fall ${Math.random() * 10 + 5}s linear infinite`;
+        drop.style.animationDelay = Math.random() * 5 + 's';
+        drop.textContent = characters.charAt(Math.floor(Math.random() * characters.length));
+        container.appendChild(drop);
+      }
+      
+      // Add animation keyframes
+      const style = document.createElement('style');
+      style.textContent = `
+        @keyframes fall {
+          to {
+            top: 100vh;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
+    window.onload = function() {
+      typeEffect();
+      createMatrixRain();
+    };
+  </script>
+</body>
+</html>

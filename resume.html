@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resume | Faiq Jadoon</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --hacker-green: #00ff41;
+      --hacker-dark: #0a0a0a;
+      --hacker-darker: #050505;
+      --hacker-gray: #1a1a1a;
+      --accent-red: #e63946;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--hacker-green);
+      background-color: var(--hacker-dark);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 255, 65, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 255, 65, 0.05) 0%, transparent 20%);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 255, 65, 0.03) 2px,
+          rgba(0, 255, 65, 0.03) 4px
+        );
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .scanline {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 255, 65, 0.2),
+        rgba(0, 255, 65, 0.05),
+        transparent
+      );
+      animation: scan 8s linear infinite;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    @keyframes scan {
+      0% {
+        top: 0%;
+      }
+      100% {
+        top: 100%;
+      }
+    }
+    
+    header {
+      background-color: rgba(10, 10, 10, 0.9);
+      padding: 1.2rem 2rem 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--hacker-green);
+      box-shadow: 0 0 15px rgba(0, 255, 65, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-container img {
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 5px var(--hacker-green));
+    }
+    
+    .logo-container h1 {
+      margin: 0;
+      color: var(--hacker-green);
+      font-size: 1.6rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      letter-spacing: 1px;
+    }
+    
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: var(--hacker-green);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 0.5rem 0.8rem;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav a::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    nav a:hover::before {
+      left: 100%;
+    }
+    
+    nav a:hover {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 15px var(--hacker-green);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+    }
+    
+    .nav-active {
+      color: var(--hacker-dark);
+      background-color: var(--hacker-green);
+      box-shadow: 0 0 10px var(--hacker-green);
+    }
+    
+    .main-content {
+      max-width: 1000px;
+      margin: 50px auto;
+      background-color: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(5px);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 
+        0 0 25px rgba(0, 0, 0, 0.7),
+        inset 0 0 15px rgba(0, 255, 65, 0.1);
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .main-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+      animation: glow 3s infinite;
+    }
+    
+    @keyframes glow {
+      0%, 100% {
+        opacity: 0.3;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+    
+    h2 {
+      color: var(--hacker-green);
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.7);
+      position: relative;
+    }
+    
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--hacker-green), transparent);
+    }
+    
+    h3 {
+      color: var(--hacker-green);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+      position: relative;
+    }
+    
+    h3::before {
+      content: ">>";
+      color: var(--hacker-green);
+      margin-right: 0.5rem;
+    }
+    
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background-color: rgba(0, 255, 65, 0.05);
+      border-radius: 6px;
+      border: 1px solid rgba(0, 255, 65, 0.2);
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .contact-item i {
+      color: var(--hacker-green);
+      width: 20px;
+    }
+    
+    p, ul {
+      line-height: 1.6;
+      color: #ccc;
+    }
+    
+    ul {
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+    
+    li::before {
+      content: ">";
+      color: var(--hacker-green);
+      position: absolute;
+      left: -1rem;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .skill-category {
+      background-color: rgba(0, 255, 65, 0.05);
+      padding: 1.2rem;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 255, 65, 0.2);
+    }
+    
+    .skill-category h4 {
+      color: var(--hacker-green);
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+      font-size: 1.1rem;
+    }
+    
+    .skill-category ul {
+      padding-left: 1rem;
+      margin: 0;
+    }
+    
+    .skill-category li {
+      margin-bottom: 0.3rem;
+    }
+    
+    .experience-item, .education-item {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px dashed rgba(0, 255, 65, 0.2);
+    }
+    
+    .experience-item:last-child, .education-item:last-child {
+      border-bottom: none;
+    }
+    
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    
+    .item-title {
+      font-weight: bold;
+      color: var(--hacker-green);
+    }
+    
+    .item-date {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    
+    .item-description {
+      color: #ccc;
+    }
+    
+    .download-container {
+      text-align: center;
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 255, 65, 0.3);
+    }
+    
+    .download-btn {
+      background-color: transparent;
+      color: var(--hacker-green);
+      padding: 0.8rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1.5px solid var(--hacker-green);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .download-btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 255, 65, 0.2),
+        transparent
+      );
+      transition: left 0.5s;
+    }
+    
+    .download-btn:hover::before {
+      left: 100%;
+    }
+    
+    .download-btn:hover {
+      background-color: var(--hacker-green);
+      color: var(--hacker-dark);
+      box-shadow: 0 0 20px var(--hacker-green);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--hacker-darker);
+      color: var(--hacker-green);
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 10;
+      border-top: 1px solid var(--hacker-green);
+      box-shadow: 0 -5px 15px rgba(0, 255, 65, 0.1);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      
+      .main-content {
+        margin: 30px 15px;
+        padding: 1.5rem;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .logo-container h1 {
+        font-size: 1.3rem;
+      }
+      
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline"></div>
+  
+  <header>
+    <div class="logo-container">
+      <img src="logo.png" alt="Logo">
+      <h1>Faiq Jadoon</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="resume.html" class="nav-active">Resume</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main-content">
+    <h2>Resume</h2>
+
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>53 Fonda Road, Markham, ON</span>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>647-807-6454</span>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <span>faiqjadoon2007@gmail.com</span>
+      </div>
+    </div>
+
+    <h3>Objective</h3>
+    <p>A dynamic and enthusiastic individual with a passion for digital marketing and Python programming/instruction. Proven ability to lead teams, manage projects, and drive positive impact in both community and technical initiatives. Skilled in online marketing tools, market analysis, budgeting planning, and project management, complemented by a strong foundation in Python programming and instruction. Committed to driving results through creativity, teamwork, and clear communication.</p>
+
+    <h3>Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h4>Digital Marketing</h4>
+        <ul>
+          <li>SEO, Social Media Marketing</li>
+          <li>Content Creation</li>
+          <li>Online Advertising Strategies</li>
+          <li>Market Analysis, Tools, Budgeting</li>
+          <li>Social Media Management</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Programming</h4>
+        <ul>
+          <li>Python, OOP, Data Structures</li>
+          <li>Algorithms, Web Scraping</li>
+          <li>NumPy, Pandas, Flask, Tkinter</li>
+          <li>Pygame, Google Colab</li>
+          <li>PyCharm, OS module</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Project Management</h4>
+        <ul>
+          <li>Team Leadership</li>
+          <li>Coordination, Operations</li>
+          <li>Fundraising</li>
+        </ul>
+      </div>
+      
+      <div class="skill-category">
+        <h4>Other Skills</h4>
+        <ul>
+          <li>Instruction & Mentoring</li>
+          <li>Community Engagement</li>
+          <li>Database Development</li>
+          <li>Data Scraping</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>Experience</h3>
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">Digital Marketer</span>
+        <span class="item-date">Abbottabad</span>
+      </div>
+      <p class="item-description">Managed 4 social media pages, content strategy, scheduling posts, and campaign contributions.</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">Hackathon Team Leader – YRHacks 2025</span>
+      </div>
+      <p class="item-description">Led team designing career decision tool using Python and scraped data from 34 school databases.</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">President – Programming Club @ MCI</span>
+      </div>
+      <p class="item-description">Founded club, taught Python to 45+ students, led projects, and mentored students.</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">Volunteer Team Lead – Soup Kitchen @ ISM</span>
+      </div>
+      <p class="item-description">Led food sales weekly, managed team, and raised $3,600 for charity.</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">Founder – IT Society @ Beaconhouse</span>
+      </div>
+      <p class="item-description">Taught Python, hosted workshops, and supported student-led tech events in Pakistan.</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">Assistant Teacher – Beaconhouse</span>
+      </div>
+      <p class="item-description">Supported ICT classes, designed coding challenges, and tutored students 1-on-1.</p>
+    </div>
+    
+    <div class="experience-item">
+      <div class="item-header">
+        <span class="item-title">Youth Volunteer – SOS Children's Village</span>
+      </div>
+      <p class="item-description">Led a fundraising campaign and mentored kids through academic and social activities.</p>
+    </div>
+
+    <h3>Education</h3>
+    <div class="education-item">
+      <div class="item-header">
+        <span class="item-title">High School Diploma</span>
+        <span class="item-date">Expected June 2025</span>
+      </div>
+      <p class="item-description">Middlefield Collegiate Institute, Markham</p>
+    </div>
+    
+    <div class="education-item">
+      <div class="item-header">
+        <span class="item-title">O Levels</span>
+        <span class="item-date">2021–2023</span>
+      </div>
+      <p class="item-description">Beaconhouse School System, Abbottabad</p>
+    </div>
+
+    <h3>Certifications</h3>
+    <ul>
+      <li><strong>Advanced Python Programming</strong> – eHunar Pakistan, July 2023</li>
+      <li><strong>Digital Marketing</strong> – Abbottabad Freelancing Hub, August 2023</li>
+    </ul>
+
+    <div class="download-container">
+      <a href="Faiq Jadoon cv.pdf" download class="download-btn">
+        <i class="fas fa-download"></i> Download My Resume (PDF)
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Faiq Jadoon. All rights reserved.</p>
+  </footer>
+</body>
+</html>
